@@ -2,29 +2,85 @@ import { useState, useEffect } from "react"
 import React from "react"
 import "./style.css"
 
-const App = () => {
-    const [items, setItems] = useState(null)
 
-    useEffect(() => {
-      fetch('https://deploy-backend-p.onrender.com/api/v1/products')
-        .then(response => response.json())
-        .then(data => setItems(data))
-    }, [])
+const Product = () => {
+  const [items, setItems] = useState(null)
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get('id');
+  console.log(id);
+   useEffect(() => {
+    fetch('https://deploy-backend-p.onrender.com/api/v1/products')
+    .then(response => response.json())
+    .then(data => setItems(data))
+    console.log("Estos son los items",items);
+  }, [])
+
+  let producto;
+  console.log(producto);
+  items?.forEach(element => {
+    if (element.id == id){
+      producto = element;
+      return producto;
+    }
+  });
+  console.log("Asignnado",producto);
+
+  //console.log(items);
+  //   console.log("entro al use efect")
+  //   const fetchData = async() => {
+  //     console.log("Entro al fetch data")
+      
+
+  //       await fetch('https://deploy-backend-p.onrender.com/api/v1/products')
+  //       .then(response => response.json())
+  //       .then(data => setItems(data[id]))
+        
+  //       //console.log(setItems,items);
+  //       const response = await fetch('https://deploy-backend-p.onrender.com/api/v1/products');
+  //       const jsonData = await response.json();
+  //       console.log(jsonData,items,id);
+  //       setItems(jsonData);
+  //       console.log("Fetch Paso")
+  //       console.log(setItems,items);
+      
+  //   };
+
+  //   fetchData();
+  //   console.log("Hizo Fetch")
+  // }, []); 
+
+  //try{
+  // useEffect(() => {
+  //   console.log("Entro al use effect")
+  //   getData();
+  //   }, [])
+ // }
+  //catch (error) {
+    //console.error('Error fetching data:', error);
+  //}
+  // const getData = async () =>{
+  //   const response = await fetch('https://deploy-backend-p.onrender.com/api/v1/products');
+  //       const jsonData = await response.json();
+  //       console.log(jsonData)
+  //       setItems(jsonData.items)
   
-    return(
+
+  console.log("return antes de tiempo")
+  return(
+      <>
 <div>
   <meta charSet="UTF-8" />
-  <title>Attom Producto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ver Producto</title>
   <link rel="shortcut icon" href="https://i.imgur.com/Ju2U2kM.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" /><link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="splide-4.1.3/dist/css/splide.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
   {/* partial:index.partial.html */}
-  <div className="cpc-viewport" data-bind="style: {display: 'block'}">
+  <div className="cpc-viewport" >
     <div className="cpc-table-cell">
       <div className="cpc-table-align">
         <main role="main" className="cpc-main">
-          <div data-bind="attr: {class: data.currentShoeOption().className + ' cpc-product-imgs'}">
+          <div className= "cpc-product-black cpc-product-imgs">
             <div className="cpc-nike-tick">
               <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="350 300 360 495">
                 <defs>
@@ -50,8 +106,8 @@ const App = () => {
               <section className="splide" aria-label="Basic Structure Example">
                 <div className="splide__track">
                   <ul className="splide__list">
-                    <li className="splide__slide"><img id="cpc-img" className="cpc-product-shoe-img animated fadeInLeft" data-bind="attr: {src: data.currentShoeOption().shoeImage}" src="https://i.imgur.com/bV5zcmi.png" /></li>
-                    <li className="splide__slide"><img className="cpc-product-shoe-img" src="https://i.imgur.com/0pJWxnQ.png" alt /></li>
+                    <li className="splide__slide"><img id="cpc-img" className="cpc-product-shoe-img animated fadeInLeft" data-bind="attr: {src: data.currentShoeOption().shoeImage}" src={producto?.image}/></li>
+                    {/* <li className="splide__slide"><img className="cpc-product-shoe-img" src="https://i.imgur.com/0pJWxnQ.png" alt /></li> */}
                   </ul>
                 </div>
               </section>
@@ -59,40 +115,41 @@ const App = () => {
           </div>
           <div className="cpc-product-info">
             <article className="animated fadeInRight">
-              <section className="cpc-product-header">
-                <h1 className="cpc-product-title">Manga Corta Attom</h1>
-                <div className="cpc-rating-container">
-                  <div className="cpc-product-rating">
-                    <span className="cpc-product-star-false" />
-                    <span className="cpc-product-star-false" />
-                    <span className="cpc-product-star-false" />
-                    <span className="cpc-product-star-false" />
-                    <span className="cpc-product-star-false" />
-                    <div className="cpc-product-rating-width" data-bind="style: {width: data.currentShoeOption().rating + '%'}">
-                      <span className="cpc-product-star-true" />
-                      <span className="cpc-product-star-true" />
-                      <span className="cpc-product-star-true" />
-                      <span className="cpc-product-star-true" />
-                      <span className="cpc-product-star-true" />
-                    </div>
-                  </div>
-                </div>
-                <h3 className="cpc-product-color" data-bind="text: data.currentShoeOption().shoeColor" />
-                <div>
-                  <span className="cpc-product-rrp" data-bind="text: data.currentShoeOption().RRP" /><span className="cpc-product-dp" data-bind="text: data.currentShoeOption().discountPrice" />
-                </div>
-              </section>
+           <section className="cpc-product-header">
+  <h1 className="cpc-product-title">{producto?.title}</h1>
+  {/* <div className="cpc-rating-container">
+    <div className="cpc-product-rating">
+      <span className="cpc-product-star-false" />
+      <span className="cpc-product-star-false" />
+      <span className="cpc-product-star-false" />
+      <span className="cpc-product-star-false" />
+      <span className="cpc-product-star-false" />
+      <div className="cpc-product-rating-width" data-bind="style: {width: 90 + '%'}">
+        <span className="cpc-product-star-true" />
+        <span className="cpc-product-star-true" />
+        <span className="cpc-product-star-true" />
+        <span className="cpc-product-star-true" />
+        <span className="cpc-product-star-true" />
+      </div>
+    </div>
+  </div> */}
+  <h3 className="cpc-product-color">{producto?.category}</h3>
+  <div>
+    <span className="cpc-product-rrp">{producto?.pricev}</span><span className="cpc-product-dp">{producto?.price}</span>
+  </div>
+</section>
+
               <section>
                 <h2 className="cpc-product-desc">Descripcion</h2>
                 <p className="cpc-product-desc-text">¡Obtén la máxima comodidad y rendimiento mientras haces ejercicio con nuestra Camisilla!
-                  Si estás buscando un conjunto de entrenamiento que te permita moverte libremente y sin restricciones, ¡nuestra prenda es la solución perfecta para ti! Diseñada con un ajuste unico , esta prenda te brinda la comodidad que necesitas para realizar cualquier actividad física con facilidad.
+							Si estás buscando un conjunto de entrenamiento que te permita moverte libremente y sin restricciones, ¡nuestra prenda es la solución perfecta para ti! Diseñada con un ajuste unico , esta prenda te brinda la comodidad que necesitas para realizar cualquier actividad física con facilidad.
                 </p><section className="cpc-size-section">
                   <h2 className="cpc-product-size-title">Tamaño</h2>
                   <select className="cpc-product-size-select">
-                    <option>S</option>
-                    <option>M</option>
+                    <option>{producto?.tamaño}</option>
+                    {/* <option>M</option>
                     <option>L</option>
-                    <option>XL</option>
+                    <option>XL</option> */}
                   </select>
                 </section>
                 <section className="cpc-qty-section">
@@ -108,7 +165,11 @@ const App = () => {
                   </select>
                 </section>
                 <section className="cpc-atc-share-section">
-                  <a href="https://wa.link/eow1n9" className="cpc-atc-button">Añadir al carrito</a>
+                  <a onClick={
+        (event) => console.log(items, id,items.title)}
+                  // href="https://wa.link/eow1n9" 
+                  className="cpc-atc-button"
+                  >Añadir al carrito</a>
                 </section>
               </section></article>
           </div>
@@ -116,5 +177,17 @@ const App = () => {
       </div>
     </div>
   </div>
+</div>
+
   {/* partial */}
-</div>)}
+
+
+
+{/* </div> */}
+
+      
+      </>
+  )
+}
+
+export default Product
