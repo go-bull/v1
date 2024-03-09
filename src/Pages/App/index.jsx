@@ -4,8 +4,8 @@ import Product from '../Product'
 
 const AppRoutes = () => {
   let routes = useRoutes([
-    { path: '/', element: <Home /> },
-    { path: '/ver-producto', element: <Product /> },
+    { path: '/v1/', element: <Home /> },
+    { path: '/v1/ver-producto', element: <Product /> },
     // { path: '/my-order', element: <MyOrder /> },
     // { path: '/my-orders', element: <MyOrders /> },
     // { path: '/sign-in', element: <SignIn /> },
