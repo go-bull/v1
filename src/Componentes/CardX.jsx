@@ -19,7 +19,7 @@ const CardX = (data) => {
         <h3>{data.data.description}</h3>
       </div>
       <a onClick={
-        (event) => window.location.href= 'https://go-bull.github.io/v1/ver-producto/?id=' + data.data.id}>Comprar</a>
+        (event) => window.location.href= 'http://localhost:3001/?id=' + data.data.id}>Comprar</a>
     </div>
   </div>
 </div>
