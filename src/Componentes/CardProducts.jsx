@@ -1,51 +1,19 @@
-import { useState, useEffect } from "react"
-import React from "react"
-import "./style.css"
+import ux from "./CardProducts.module.css";
 
-
-const Product = () => {
-  const [items, setItems] = useState(null)
-  const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get('id');
-  
-   useEffect(() => {
-    fetch('https://deploy-backend-p.onrender.com/api/v1/products')
-    .then(response => response.json())
-    .then(data => setItems(data))
-  }, [])
-
-  let producto;
-  items?.forEach(element => {
-    if (element.id == id){
-      producto = element;
-      return producto;
-    }
-  });
-
-
-  
-
-  console.log("return antes de tiempo")
-  return(
-      <>
+const CardProducts = (data) => {
+    return (
+      
 <div>
-  <meta charSet="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ver Producto</title>
-  <link rel="shortcut icon" href="https://i.imgur.com/Ju2U2kM.png" />
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
-  {/* partial:index.partial.html */}
-  <div className="cpc-viewport" >
-    <div className="cpc-table-cell">
-      <div className="cpc-table-align">
-        <main role="main" className="cpc-main">
-          <div className= "cpc-product-black cpc-product-imgs">
-            <div className="cpc-nike-tick">
+  <div className={ux.containerCa}>
+    <div className={ux.card}>
+      <div className={ux["card-head"]}>
+        {/* <img src="https://s5.postimg.cc/wy79025cz/nike_Logo_White.png" alt="logo" className={ux["card-logo"]} /> */}
+        <svg fill= "#fff" className={ux.icononavH} width={100} height={65} viewBox="321 320 464 360">
+        {/* <div className="cpc-nike-tick">
               <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="350 300 360 495">
                 <defs>
                   <style dangerouslySetInnerHTML={{__html: "\n\t\t\t\t\t\t\t\t.cls-1 {\n\t\t\t\t\t\t\t\t  fill: #fff;\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t  " }} />
-                </defs>
+                </defs> */}
                 <path className="cls-1" d="m466.52,375.1c6.68-2.65,13.36-5.31,20.46-8.13-.33-1.66-.74-3.71-1.34-6.73-9.52,1.64-18.93,2.69-28.04,4.97-13.04,3.27-26.1,6.77-38.71,11.39-13.27,4.87-26.36,4.48-39.76,1.86-.77-.15-1.54-.36-3.08.38,3.03,3.28,6.06,6.55,9.16,9.89-7.65,1.3-15.55,2.65-24.56,4.19,5.63,2.34,10.11,4.2,14.47,6.01-11.33,6.97-22.32,13.72-33.78,20.76,4.75,9,9.12,17.28,13.37,25.34,12.89-9.6,25.39-18.91,37.89-28.23.29.35.58.7.86,1.05-1.4,1.45-2.95,2.79-4.18,4.38-8.64,11.16-17.28,22.33-25.72,33.65-.8,1.07-.85,3.59-.14,4.78,18.65,31.12,37.44,62.15,56.22,93.19.32.53.83.95,1.68,1.92,7.24-26.24,18-50.29,33.1-71.5-4.28,14.32-9.52,29.05-12.98,44.19-3.24,14.21-4.76,28.83-6.64,43.32-.32,2.48.73,5.6,2.16,7.77,5.54,8.4,11.49,16.53,18.06,25.85.54-10.21.71-18.96,1.5-27.65,3.35-36.71,13.16-71.89,25.7-106.39,2.61-7.19,5.72-14.19,8.3-21.39.71-1.98.32-4.34.44-6.53-2.23.63-5.06.6-6.57,2-6.33,5.85-12.27,12.13-18.9,18.05,7.74-12.07,15.48-24.15,23.24-36.24-4.29-3.26-8.93-6.79-13.57-10.33.11-.43.23-.86.34-1.29,10.83.84,18.74-4.3,25.5-11.81,2.45-2.72,4.91-6.18,2.35-9.23-1.5-1.78-5.89-2.51-8.42-1.77-6.48,1.89-13.04,4.18-18.86,7.54-24.1,13.92-47.24,29.23-66.73,49.41,22.3-30.04,51.94-51.21,84.1-69.38q-3.87-7.27-11.73-6.02c-4.9.79-9.79,1.65-14.68,2.48-.17-.58-.34-1.15-.51-1.73Z" />
                 <path className="cls-1" d="m652.39,439.2c1.53,1.27,3.2,2.41,4.58,3.83,4.65,4.76,9.47,8.2,16.91,7.24,2.91-.38,6.57,2.03,9.32,3.97,5.15,3.62,9.88,7.83,15.34,12.25-7.34-18.07-24.2-38.46-40.3-36.18.76,1.34,1.47,2.57,2.2,3.86-4.02-1.11-7.85-2.7-11.81-3.15-6.32-.72-8.63,2.85-6.21,8.63.94,2.24,1.6,4.6,1.9,7.05-3.01-4.14-5.94-8.35-9.06-12.4-1.1-1.43-2.48-2.88-4.05-3.61-1.24-.58-2.99-.08-4.51-.06.07,1.46-.2,3.05.29,4.36.55,1.49,1.78,2.73,2.35,3.55-6.2-2.74-12.58-7.33-19.38-8.07-7.06-.76-14.52,2.21-23.14,3.8,2.72-2.25,4.64-4.4,7.03-5.67,3.12-1.67,3.27-3.81,2.21-6.6-3.77-9.96-5.63-15.12-19.94-14.25.91-.42,2.01-.63,2.68-1.29,1.23-1.21,2.21-2.68,3.3-4.03-1.51-1.13-2.86-2.73-4.56-3.3-7.01-2.37-13.42-.53-19.42,3.39-11.02,7.19-25.4,12.18-34.26,12.14,4.94-2.46,10.44-5.06,15.78-7.96,1.27-.69,2.92-2.56,2.72-3.55-.25-1.23-2.08-2.54-3.51-3.05-5.48-1.96-11.09-2.76-16.3.73-5.66,3.8-11.15,7.85-16.73,11.77-3.5,2.46-7.02,4.9-11.46,7.99,22.3,7.23,42.02,2.59,60.91-8.51.28.44.56.88.84,1.33-5.32,4.04-10.36,8.5-16,12.03-23.03,14.41-33.47,40.38-26.43,66.6,5.23,19.44,21.17,31.97,41.36,32,10.65.01,21.31-1.1,31.96-.94,18.71.27,35.74,5.62,49.95,18.37.62.55,1.45.86,2.19,1.28-.26.36-.52.72-.78,1.08-1.86-.74-3.72-1.49-6.04-2.42.71,5.57,2.24,10.24,7.4,12.42,6.18,2.6,12.41,2.49,19.36-1.06-3.4-.82-5.85-1.41-8.3-2,.02-.24.04-.48.07-.72,2.76-.42,5.52-.84,7.85-1.2-2.2-6.65-4.37-13.28-6.65-19.88-.23-.66-1.12-1.12-1.74-1.62-4.31-3.5-8.6-7.03-12.96-10.46-1.54-1.21-3.16-2.43-4.93-3.23-12.89-5.88-26.73-7.88-40.6-9.72-6.59-.87-13.23-1.65-19.69-3.12-1.79-.41-4.05-2.97-4.4-4.87-3.28-17.63,7.31-30.86,26.02-32.9,2.42-.26,4.86-.39,8.71-.7-4.11-3.59-7.17-6.27-10.23-8.95.21-.32.41-.65.62-.97,3.59,2.41,7.91,4.19,10.65,7.35,8.37,9.66,16.53,19.56,24,29.92,5.33,7.39,9.16,15.85,14.17,23.49,2.33,3.56,5.87,6.34,9.56,9.21,2.89-14.57,10.29-24.95,23.29-30.93q-5.43-10.47-12.73-8.78c5.06-7.05,14.81-9.72,19.56-.1,3.45,6.98,6.47,14.16,9.3,21.71-3.26-3.76-6.6-3.67-10.34-1.35-7.32,4.54-11.47,11.05-11.96,19.61-.07,1.28,1.58,3.29,2.93,3.93,5.97,2.81,12.18,5.12,18.2,7.84,3.8,1.72,7.61,1.52,10.14-1.38,3.69-4.24,6.51-9.22,10.02-14.35-3.11-1.23-4.76-1.88-6.12-2.42,4.96-3.65,10.44-6.77,14.67-11.11,2.93-3,4.32-7.62,5.91-11.7.3-.76-1.54-3.32-2.67-3.53-12.62-2.3-21.36-10.08-29.33-19.44-3.72-4.37-8.06-8.53-12.89-11.56-9.34-5.85-16.73-4-23.49,4.75-.49.63-.98,1.27-2.19,1.88,6.04-9.19,4.17-17.67-2.48-25.75.45-.16.9-.32,1.34-.48Zm-78.24,12.27c.08.41.16.83.24,1.24-11.71,4.89-18.59,13.82-21.7,26.02-2.2-6.11-4.17-12.42-.86-17.85,2.19-3.59,6.86-5.66,10.18-8.22-.15-.07-1.26-.6-2.37-1.13l.24-.68c4.75.21,9.51.42,14.26.63Z" />
                 <path className="cls-1" d="m538.67,666.99c-3.03-22.94-2.82-44.97.78-66.99,3.61-22.09,10.7-42.84,23.72-62.5-22.01,5.86-42.31,6.74-59.79-10.47,5.96.74,11.29,1.79,16.65,1.95,5.33.15,10.69-.59,16.14-1.68-12.81-5.24-23.79-12.32-31.16-24.04-7.34-11.67-8.67-24.58-7.15-38.03-.52-.12-1.04-.23-1.56-.35-2.5,7.77-5.54,15.4-7.4,23.32-7.06,30.06-8.42,60.59-6.54,91.33,1.32,21.67,4.27,43.04,11.24,63.7,3.64,10.79,8.41,20.98,15.96,29.71,2.49,2.88,4.84,3.99,8.63,2.31,6.66-2.97,13.53-5.48,20.48-8.24Z" />
@@ -61,93 +29,63 @@ const Product = () => {
                 <polygon className="cls-1" points="674.52 491.45 690.65 504.27 673.53 527.49 651.24 522.38 655.64 491.45 674.52 491.45" />
                 <path className="cls-1" d="m672.23,532.97c.55.77,3.28,4.68,2.11,8.82-1.41,5-8.03,8.69-15.63,7.03l-10.16-22.95c7.22,1.53,14.43,3.06,21.65,4.59" />
               </svg>
-            </div>
-            <div className="cpc-img-wrapper">
-              <section className="splide" aria-label="Basic Structure Example">
-                <div className="splide__track">
-                  <ul className="splide__list">
-                    <li className="splide__slide"><img id="cpc-img" className="cpc-product-shoe-img animated fadeInLeft" data-bind="attr: {src: data.currentShoeOption().shoeImage}" src={producto?.image}/></li>
-                    {/* <li className="splide__slide"><img className="cpc-product-shoe-img" src="https://i.imgur.com/0pJWxnQ.png" alt /></li> */}
-                  </ul>
-                </div>
-              </section>
-            </div>
-          </div>
-          <div className="cpc-product-info">
-            <article className="animated fadeInRight">
-           <section className="cpc-product-header">
-  <h1 className="cpc-product-title">{producto?.title}</h1>
-  {/* <div className="cpc-rating-container">
-    <div className="cpc-product-rating">
-      <span className="cpc-product-star-false" />
-      <span className="cpc-product-star-false" />
-      <span className="cpc-product-star-false" />
-      <span className="cpc-product-star-false" />
-      <span className="cpc-product-star-false" />
-      <div className="cpc-product-rating-width" data-bind="style: {width: 90 + '%'}">
-        <span className="cpc-product-star-true" />
-        <span className="cpc-product-star-true" />
-        <span className="cpc-product-star-true" />
-        <span className="cpc-product-star-true" />
-        <span className="cpc-product-star-true" />
+    
+        <img src={data.data.image} alt="Shoe" className={ux["product-img"]} />
+        <div className={ux["product-detail"]}>
+          <h2>{data.data.title}</h2> Support and Nike Zoom Air come together for a more supportive feel with high-speed responsiveness
+        </div>
+        <span className={ux["back-text"]}>
+          BULL
+        </span>
       </div>
-    </div>
-  </div> */}
-  <h3 className="cpc-product-color">{producto?.category}</h3>
-  <div>
-    <span className="cpc-product-rrp">{producto?.pricev}</span><span className="cpc-product-dp">{producto?.price}</span>
-  </div>
-</section>
-
-              <section>
-                <h2 className="cpc-product-desc">Descripcion</h2>
-                <p className="cpc-product-desc-text">¡Obtén la máxima comodidad y rendimiento mientras haces ejercicio con nuestra Camisilla!
-							Si estás buscando un conjunto de entrenamiento que te permita moverte libremente y sin restricciones, ¡nuestra prenda es la solución perfecta para ti! Diseñada con un ajuste unico , esta prenda te brinda la comodidad que necesitas para realizar cualquier actividad física con facilidad.
-                </p><section className="cpc-size-section">
-                  <h2 className="cpc-product-size-title">Tamaño</h2>
-                  <select className="cpc-product-size-select">
-                    <option>{producto?.tamaño}</option>
-                    {/* <option>M</option>
-                    <option>L</option>
-                    <option>XL</option> */}
-                  </select>
-                </section>
-                <section className="cpc-qty-section">
-                  <h2 className="cpc-product-qty-title">Cantidad</h2>
-                  <select className="cpc-product-qty-select">
-                    <option>(1)</option>
-                    <option>(2)</option>
-                    <option>(3)</option>
-                    <option>(4)</option>
-                    <option>(5)</option>
-                    <option>(6)</option>
-                    <option>(7)</option>
-                  </select>
-                </section>
-                <section className="cpc-atc-share-section">
-                  <a onClick={
-        (event) => console.log(items, id,items.title)}
-                  // href="https://wa.link/eow1n9" 
-                  className="cpc-atc-button"
-                  >Añadir al carrito</a>
-                </section>
-              </section></article>
-          </div>
-        </main>
+      <div className={ux["card-body"]}>
+        <div className={ux["product-desc"]}>
+          <span className={ux["product-title"]}>
+            Hartbee<b>spoort</b>
+            <span className={ux.badge}>
+              New
+            </span>
+          </span>
+          <span className={ux["product-caption"]}>
+          {data.data.category}
+          </span>
+          <span className={ux["product-rating"]}>
+            <i className="fa fa-star" />
+            <i className="fa fa-star" />
+            <i className="fa fa-star" />
+            <i className="fa fa-star" />
+            <i className="fa fa-star grey" />
+          </span>
+        </div>
+        <div className={ux["product-properties"]}>
+          {/* <span className="product-size">
+            <h4>Size</h4>
+            <ul className="ul-size">
+              <li><a href="#">7</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#" className="active">10</a></li>
+              <li><a href="#">11</a></li>
+            </ul>
+          </span> */}
+          {/* <span className={ux["product-color"]}>
+            <h4>Colour</h4>
+            <ul className={ux["ul-color"]}>
+              <li><a href="#" className="orange active" /></li>
+              <li><a href="#" className="green" /></li>
+              <li><a href="#" className="yellow" /></li>
+            </ul>
+          </span> */}
+          <span className={ux["product-price"]}>
+            COP<b>{data.data.price}</b>
+          </span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-  {/* partial */}
-
-
-
-{/* </div> */}
-
-      
-      </>
-  )
+)
 }
 
-export default Product
+export default CardProducts

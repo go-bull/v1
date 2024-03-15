@@ -1,21 +1,32 @@
 import { useState, useEffect } from "react"
 import React from "react"
-import "./style-i.css"
-import CardX from "../../Componentes/CardX"
+import "./style-u.css"
+import CardProducts from "../../Componentes/CardProducts"
 
-const Home = () => {
-    // const [items, setItems] = useState(null)
+const Products = () => {
+    const [items, setItems] = useState(null)
 
-    // useEffect(() => {
-    //   fetch('https://deploy-backend-p.onrender.com/api/v1/products')
-    //     .then(response => response.json())
-    //     .then(data => setItems(data))
-    //     console.log(items);
-    // }, [])
-  
+    useEffect(() => {
+      fetch('https://deploy-backend-p.onrender.com/api/v1/products')
+        .then(response => response.json())
+        .then(data => setItems(data))
+        console.log(items);
+    }, [])
+    const urlParams = new URLSearchParams(window.location.search);
+    const pullcategoy = urlParams.get('cat');
+    var categoria = pullcategoy;
+    let devCategoria;
+    items?.forEach(element => {
+      console.log(categoria,element.category);
+      if (element.category == categoria){
+        devCategoria = [element];
+        return devCategoria;
+      }
+    });
+
+
     return(
         <>
-<div>
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Inicio de Attom</title>
@@ -55,96 +66,33 @@ const Home = () => {
       <p><i className="fas fa-shopping-cart" /></p>
     </div>
   </nav>
-  {/* Fin de la barre de navigation */}
-  <section className="container section-1">
-    <div className="slogan">
-      <h1 className="company-title">¿Quieres llevar tu entrenamiento al siguiente nivel?</h1>
-      <h2 className="company-slogan">
-        
-      
-¡DOMINA tu rendimiento con nuestra selección EXCLUSIVA de SUPLEMENTOS! 💪💥 Despierta tu POTENCIAL y alcanza tus metas fitness como nunca antes. ¡Convierte cada entrenamiento en una VICTORIA y haz que tu cuerpo hable por sí mismo! 🔥🚀
-      </h2>
-    </div>
-    <div className="home-computer-container">
-      <img className="home-computer" src="https://www.nutricore.com.co/images/categories/thumbs/brand_31.1606252257.png" alt="a computer in dark with shadow" />
-    </div>
-  </section>
-  {/* Header width="60" height="60" */}
-  <header>
-    <h1 className="h1Inicial">Activa tu cuerpo con nuestra suplemetacion.</h1>
-  </header>
-  {/* Fin du header */}
-  {/* Section principale */}
-  <section className="main">
-    {/* Toutes les cartes */}
 
-    <div className="containerCardX">
-    {<CardX data={{id: "Hipercalorica", description: '¡Potencia tus ganancias con nuestras proteínas hipercalóricas! Energía y crecimiento en cada gramo.', image: 'https://cdnx.jumpseller.com/elite-nutrition-colombia/image/45040328/resize/540/540?1706549123',category: "Hipercaloricas"}} />}
-    {<CardX data={{id: "Deficit", description: '¡Fuerza Pura en Cada Batido! ¡Potencia tu Entrenamiento con Explosión Muscular!',image:"https://suplementos.b-cdn.net/proteinas/nitro-tech-2lbs-vainilla-500x500.webp",category: "Whey Protein",color: "#9bdc28"}} />}
-    </div>
-
-    {/* <div className="cards">
-      <div className="card">
-        <a href="https://4ndresg4.github.io/style1.html" className="enlace-sin-subrayado"> 
-          <img src="https://i.imgur.com/lE3JJTD.png" />
-          <div className="card-header">
-            <h4 className="title">Manga corta Attom</h4>
-            <h4 className="priceV">$70.000</h4>
-            <h4 className="price">$49.990</h4>
-          </div>
-          <div className="card-body">
-            <p>Tela drift de alta duracion,Blanca con negro</p>
-          </div>
-        </a></div><a href="https://4ndresg4.github.io/style1.html" className="enlace-sin-subrayado">
-      </a><div className="card"><a href="https://4ndresg4.github.io/style1.html" className="enlace-sin-subrayado">
-        </a><a href="https://4ndresg4.github.io/style2.html" className="enlace-sin-subrayado"> 
-          <img src="https://i.imgur.com/W9nHbfb.png" />
-          <div className="card-header">
-            <h4 className="title">Manga corta Attom</h4>
-            <h4 className="priceV">$70.000</h4>
-            <h4 className="price">$49.990</h4>
-          </div>
-          <div className="card-body">
-            <p>Tela drift de alta duracion,Negra con blanco</p>
-          </div>
-        </a>
+<section className="feature-products">
+  <div className="containerxxx">
+    <div className="rowxxx">
+      <div className="feature-title">
+        <h3>Categorias:</h3>
+        <a className="feature-active" onClick={
+        (event) => window.location.href= 'http://localhost:3000/v1/productos/?cat=Hipercalorica'}>HiperCaloricas</a> | <a onClick={
+          (event) => window.location.href= 'http://localhost:3000/v1/productos/?cat=Deficit'}>Whey</a> | <a onClick={
+          (event) => 
+          (alert("Aun no tenemos productos naturistas :("))
+          } >Naturista</a> 
       </div>
-      <div className="card">
-        <a href="https://4ndresg4.github.io/style3.html" className="enlace-sin-subrayado"> 
-          <img src="https://i.imgur.com/kicbdZV.png" />
-          <div className="card-header">
-            <h4 className="title">Manga corta Attom</h4>
-            <h4 className="priceV">$70.000</h4>
-            <h4 className="price">$49.990</h4>
-          </div>
-          <div className="card-body">
-            <p>Tela drift de alta duracion,Cafe con negro</p>
-          </div>
-        </a>
-      </div>
-    </div> */}
-    {/* Fin de toutes les cartes */}
-    {/* Video de presentation */}
-    {/* <img className="Publicidad" src="https://i.imgur.com/HZhYURx.jpeg" /> */}
-    {/* Fin de la video de presentation */}
-  </section>
-  {/* Fin de la section principale */}
-  {/* Pied de page */}
-  <footer>
-    <p>© Contactanos al +57 3225835201</p>
-    <div className="social-media">
-      {/* <p><i class="fab fa-facebook-f"></i></p>
-<p><i class="fab fa-twitter"></i></p> */}
-      <a href="https://instagram.com/attom_fitness?igshid=NTc4MTIwNjQ2YQ==" className="instagramF"><p><i className="fab fa-instagram" /></p></a>
-      {/* <p><i class="fab fa-linkedin-in"></i></p> */}
+      <div className="containerCardX2">
+    {
+          devCategoria?.map(dev => (
+            console.log(dev),
+            <CardProducts key={dev.id} data={dev} />
+          ))
+        }
     </div>
-  </footer>
-  {/* Fin du pied de page */}
-</div>
+    </div>
+  </div>           
+</section>
 
-        
         </>
-    )
+)
 }
-
-export default Home
+        
+export default Products
