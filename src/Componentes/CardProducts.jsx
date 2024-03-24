@@ -76,7 +76,8 @@ const CardProducts = (data) => {
               <li><a href="#" className="yellow" /></li>
             </ul>
           </span> */}
-          <span className={ux["product-price"]}>
+          <span onClick={
+        (event) => window.location.href= 'https://go-bull.github.io/v1/#/producto/' + data.data.id} className={ux["product-price"]}>
             COP<b>{data.data.price}</b>
           </span>
         </div>

@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react"
 import React from "react"
 import "./style.css"
+import { useParams } from "react-router-dom"
+import impJson from '../../Json/products.json'
 
 
 const Product = () => {
   const [items, setItems] = useState(null)
   const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get('id');
+  const params = useParams();
+  const id = params.product;
   
    useEffect(() => {
-    fetch('https://deploy-backend-p.onrender.com/api/v1/products')
-    .then(response => response.json())
-    .then(data => setItems(data))
+    setItems(impJson)
+    // fetch('https://deploy-backend-p.onrender.com/api/v1/products')
+    // .then(response => response.json())
+    // .then(data => setItems(data))
   }, [])
 
   let producto;
@@ -129,7 +133,7 @@ const Product = () => {
         (event) => console.log(items, id,items.title)}
                   // href="https://wa.link/eow1n9" 
                   className="cpc-atc-button"
-                  >Añadir al carrito</a>
+                  >Comprar</a>
                 </section>
               </section></article>
           </div>

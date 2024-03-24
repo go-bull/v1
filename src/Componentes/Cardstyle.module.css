@@ -198,3 +198,7 @@
   transition-delay: 0.75s;
   
 }
+
+.buttomCat{
+  cursor: pointer;
+}

@@ -71,7 +71,7 @@ const Home = () => {
   </section>
   {/* Header width="60" height="60" */}
   <header>
-    <h1 className="h1Inicial">Activa tu cuerpo con nuestra suplemetacion.</h1>
+    <h1 className="h1Inicial">Categorias:</h1>
   </header>
   {/* Fin du header */}
   {/* Section principale */}

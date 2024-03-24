@@ -4,7 +4,7 @@
 html,
 body {
   margin: 0;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   font-family: "Fjalla One", Arial, sans serif;
   color: #444444;
 }
@@ -143,7 +143,7 @@ body {
   width: 362px;
   margin-top: 44px;
   position: absolute;
-  margin-left: -20px;
+  /* margin-left: -20px; */
 
 }
 .cpc-product-shoe-img2 {
@@ -523,7 +523,7 @@ input[type=radio] {
   display: none;
 }
 
-label {
+/* label {
   position: relative;
   display: inline-block;
   height: 20px;
@@ -533,7 +533,7 @@ label {
   margin-right: 8px;
   z-index: 1;
   cursor: pointer;
-}
+} */
 
 .cpc-radio-green {
   background: #59e8c8;

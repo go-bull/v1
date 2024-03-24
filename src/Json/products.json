@@ -1,0 +1,75 @@
+[
+    {
+      "id": 1,
+      "title": "Proteina Prociense",
+      "price": "99.990",
+      "description": "exelente",
+      "image": "https://cdnx.jumpseller.com/elite-nutrition-colombia/image/45040328/resize/540/540?1706549123",
+      "category": "Hipercalorica",
+      "usemode": "#9bdc28",
+      "pricev": "120.000",
+      "tamaño": "10LB",
+      "imagep": "1"
+    },
+    {
+      "id": 2,
+      "title": "Proteina Whey",
+      "price": "149.990",
+      "description": "Perfecta para definir",
+      "image": "https://suplementos.b-cdn.net/proteinas/nitro-tech-2lbs-vainilla-500x500.webp",
+      "category": "Deficit",
+      "usemode": "#9bdc28",
+      "pricev": "170.000",
+      "tamaño": "5LB",
+      "imagep": "1"
+    },
+    {
+      "id": 3,
+      "title": "Dymatize ISO",
+      "price": "409.990",
+      "description": "Perfecta para definir",
+      "image": "https://fitplus.com.co/wp-content/uploads/2022/04/iso-vainilla.png",
+      "category": "Deficit",
+      "usemode": "470.000",
+      "pricev": "470.000",
+      "tamaño": "5LB",
+      "imagep": "1"
+    },
+    {
+      "id": 4,
+      "title": "Ginkgo Biloba",
+      "price": "99.990",
+      "description": "exelente",
+      "image": "https://cdnx.jumpseller.com/elite-nutrition-colombia/image/45040328/resize/540/540?1706549123",
+      "category": "Agotamiento",
+      "usemode": "#9bdc28",
+      "pricev": "120.000",
+      "tamaño": "10LB",
+      "imagep": "1"
+    },
+    {
+      "id": 5,
+      "title": "Folic - Ácido Fólico",
+      "price": "99.990",
+      "description": "exelente",
+      "image": "https://cdnx.jumpseller.com/elite-nutrition-colombia/image/45040328/resize/540/540?1706549123",
+      "category": "Agotamiento",
+      "usemode": "#9bdc28",
+      "pricev": "120.000",
+      "tamaño": "10LB",
+      "imagep": "1"
+    },
+    {
+      "id": 7,
+      "title": "Proteina Whey",
+      "price": "149.990",
+      "description": "Perfecta para definir",
+      "image": "https://suplementos.b-cdn.net/proteinas/nitro-tech-2lbs-vainilla-500x500.webp",
+      "category": "Deficit",
+      "usemode": "#9bdc28",
+      "pricev": "170.000",
+      "tamaño": "5LB",
+      "imagep": "1"
+    }
+    
+  ]

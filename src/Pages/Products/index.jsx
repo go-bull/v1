@@ -2,28 +2,37 @@ import { useState, useEffect } from "react"
 import React from "react"
 import "./style-u.css"
 import CardProducts from "../../Componentes/CardProducts"
+import { useParams } from "react-router-dom"
+import impJson from '../../Json/products.json'
+
 
 const Products = () => {
     const [items, setItems] = useState(null)
+    const [dcat, setDcat] = useState(null)
+
 
     useEffect(() => {
-      fetch('https://deploy-backend-p.onrender.com/api/v1/products')
-        .then(response => response.json())
-        .then(data => setItems(data))
-        console.log(items);
+      setItems(impJson)
+      // fetch('https://deploy-backend-p.onrender.com/api/v1/products')
+        // .then(response => response.json())
+        // .then(data => setItems(data))
+        // console.log(items,"q?");
     }, [])
-    const urlParams = new URLSearchParams(window.location.search);
-    const pullcategoy = urlParams.get('cat');
-    var categoria = pullcategoy;
+    const params = useParams();
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const pullcategoy = urlParams.get('cat');
+    var categoria = params.cat;
     let devCategoria;
     items?.forEach(element => {
-      console.log(categoria,element.category);
       if (element.category == categoria){
-        devCategoria = [element];
+        if(devCategoria == undefined) {
+          devCategoria = [element];
+        }else{     
+          devCategoria.push(element);   
+        }
         return devCategoria;
       }
     });
-
 
     return(
         <>
@@ -70,19 +79,38 @@ const Products = () => {
 <section className="feature-products">
   <div className="containerxxx">
     <div className="rowxxx">
-      <div className="feature-title">
-        <h3>Categorias:</h3>
-        <a className="feature-active" onClick={
-        (event) => window.location.href= 'http://localhost:3000/v1/productos/?cat=Hipercalorica'}>HiperCaloricas</a> | <a onClick={
-          (event) => window.location.href= 'http://localhost:3000/v1/productos/?cat=Deficit'}>Whey</a> | <a onClick={
-          (event) => 
-          (alert("Aun no tenemos productos naturistas :("))
-          } >Naturista</a> 
-      </div>
+
+<div className="main-wrapper">
+
+{(() => {
+      if (categoria == "Hipercalorica") {
+        return <input name="category-css" id="all" type="radio"  checked></input>
+      }if (categoria == "Deficit") {
+        return <input name="category-css" id="webdesign" type="radio" checked/>
+      }if (categoria == "Agotamiento") {
+        return <input name="category-css" id="webdevelopment" type="radio" checked/>
+        }
+    })()}
+  <input name="category-css" id="all" type="radio"/>
+  <input name="category-css" id="webdesign" type="radio" />
+  <input name="category-css" id="webdevelopment" type="radio" />
+
+
+  
+  <ul className="list-category">
+    <li><label onClick={
+        (event) => window.location.href= 'https://go-bull.github.io/v1/#/categorias/Hipercalorica'} htmlFor="all">HiperCaloricas</label></li>
+    <li><label onClick={
+          (event) => window.location.href= 'https://go-bull.github.io/v1/#/categorias/Deficit'} htmlFor="webdesign">Whey</label></li>
+    <li><label onClick={
+          (event) => window.location.href= 'https://go-bull.github.io/v1/#/categorias/Agotamiento'} htmlFor="webdevelopment"
+           >Naturista</label></li>
+  </ul>
+</div>
+
       <div className="containerCardX2">
     {
           devCategoria?.map(dev => (
-            console.log(dev),
             <CardProducts key={dev.id} data={dev} />
           ))
         }

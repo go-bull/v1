@@ -42,6 +42,81 @@
 
 
 
+
+
+
+
+.main-wrapper {
+    display: block;
+    margin: 0px auto 0px;
+    width: 960px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-wrapper input[type="radio"] {
+    display: none;
+}
+/* Lista de Categorias 
+--------------------------------------------*/
+.list-category li {
+display: inline-block;
+font-size: 1.6em;
+}
+
+.list-category label  {
+   display: inline-block;
+   color: #E5E5E5;
+   cursor: pointer;
+   background: #3e4257;
+   -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25);
+   box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25);
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   border-radius: 3px;
+   padding: 6px 12px;
+   -webkit-transition: all 0.2s ease;
+   -o-transition: all 0.2s ease;
+   transition: all 0.2s ease;
+   margin-left: 8px;
+}
+
+/* Estilos cuando un radio esta seleccionado
+--------------------------------------------------*/
+#all:checked ~ .list-category label[for="all"],
+#webdesign:checked ~ .list-category label[for="webdesign"], 
+#webdevelopment:checked ~ .list-category label[for="webdevelopment"] 
+/* #graphicdesign:checked ~ .list-category label[for="graphicdesign"], 
+#javascript:checked ~ .list-category label[for="javascript"] */
+{
+   background: #d4401b;
+   color: #FFF;
+}
+
+
 @media only screen and (max-width:990px){
     .product-grid{ margin-bottom: 30px; }
+}
+
+@media screen and (max-width: 530px) {
+     .list-category li {
+        font-size: 0.9em;
+        margin-left: -2px;
+        margin-right: 8px;
+
+    }
+    .main-wrapper {
+        width: 100%;
+    }
+    .containerCardX2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 0rem;
+        row-gap: 2rem;
+        width: 100%;
+        max-width: 1024px;
+        margin-left: 0rem;
+  }
+
 }
