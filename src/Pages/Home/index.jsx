@@ -80,7 +80,8 @@ const Home = () => {
 
     <div className="containerCardX">
     {<CardX data={{id: "Hipercalorica", description: '¡Potencia tus ganancias con nuestras proteínas hipercalóricas! Energía y crecimiento en cada gramo.', image: 'https://cdnx.jumpseller.com/elite-nutrition-colombia/image/45040328/resize/540/540?1706549123',category: "Hipercaloricas"}} />}
-    {<CardX data={{id: "Deficit", description: '¡Fuerza Pura en Cada Batido! ¡Potencia tu Entrenamiento con Explosión Muscular!',image:"https://suplementos.b-cdn.net/proteinas/nitro-tech-2lbs-vainilla-500x500.webp",category: "Whey Protein",color: "#9bdc28"}} />}
+    {<CardX data={{id: "Deficit", description: '¡Fuerza Pura en Cada Batido! ¡Potencia tu Entrenamiento con Explosión Muscular!',image:"https://suplementos.b-cdn.net/proteinas/nitro-tech-2lbs-vainilla-500x500.webp",category: "Whey Protein"}} />}
+    {<CardX data={{id: "Agotamiento", description: '¡Despierta tu bienestar con la pureza y el poder de nuestros productos naturistas,tu camino hacia una mejor vida!',image:"https://i.imgur.com/IN9RY8t.png",category: "Naturista",color: "#9bdc28"}} />}
     </div>
 
     {/* <div className="cards">
